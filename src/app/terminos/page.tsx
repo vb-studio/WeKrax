@@ -138,7 +138,7 @@ export default function TerminosGeneral() {
                                 </div>
                             </div>
                             <div className="flex flex-wrap justify-center gap-4">
-                                <button className="px-6 py-3 rounded-full border border-white/20 text-white font-bold hover:bg-white/10 transition-colors magnetic-hover">Descargar PDF</button>
+                                <a href="/Terminos_WeKrax.pdf" download="Terminos_y_Condiciones_WeKrax.pdf" className="px-6 py-3 rounded-full border border-white/20 text-white font-bold hover:bg-white/10 transition-colors magnetic-hover">Descargar PDF</a>
                                 <Link href="/#contacto" className="px-6 py-3 rounded-full bg-primary text-black font-bold hover:brightness-110 transition-all shadow-[0_0_20px_rgba(255,95,0,0.3)] magnetic-hover">Volver al Inicio</Link>
                             </div>
                         </div>
