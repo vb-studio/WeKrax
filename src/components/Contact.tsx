@@ -66,7 +66,7 @@ export default function Contact() {
                             </div>
                             <div>
                                 <p className="text-slate-500 text-sm">Escríbenos</p>
-                                <p className="text-slate-100 font-medium tracking-wide">hola@wekrax.ai</p>
+                                <p className="text-slate-100 font-medium tracking-wide">jeremias07leiva@gmail.com</p>
                             </div>
                         </div>
                         <div className="flex items-center gap-4 group cursor-default">
@@ -75,7 +75,7 @@ export default function Contact() {
                             </div>
                             <div>
                                 <p className="text-slate-500 text-sm">Sede Central</p>
-                                <p className="text-slate-100 font-medium tracking-wide">Buenos Aires, Argentina</p>
+                                <p className="text-slate-100 font-medium tracking-wide">Pilar Centro, Buenos Aires. Argentina</p>
                             </div>
                         </div>
                     </div>
