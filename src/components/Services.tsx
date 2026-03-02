@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Services() {
     return (
         <div id="servicios" className="w-full flex flex-col">
@@ -213,7 +215,7 @@ export default function Services() {
                                     <h4 className="text-2xl font-bold text-slate-100">Landings & One-Pages</h4>
                                     <p className="text-slate-400 text-sm leading-relaxed">El punto final de la experiencia visual: interfaces de alto impacto optimizadas para la conversión radical.</p>
                                     <div className="w-full h-32 mt-4 rounded-xl bg-slate-800/50 flex items-center justify-center border border-white/5 overflow-hidden relative">
-                                        <img alt="Web Dev" className="w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPUYLfZsjtFeK4YmdNacA26oKoI8f0DDVvLO27Y6tIriO8H4fqHb1CmdhqruaTqBVV7Ap2uu2Vkw31M41LPBVmnJ2EWMtKL8f03BeKdi55hKVKXEj5_6CzjI4gh-pgFlyAfyJYn4CKwYVkTJFubji2urqq4Y7KF4QCp4gwXUxWQOFPkfDfQO9vM_pgSo4fLSlPxLku_hLeoUnFj7dRsRq2mBne9Wcwbzw0Uv_gfCeidoetqtyzCBFc9N8n9SJPAXnSRni6L4CJisve" />
+                                        <Image alt="Web Dev" src="/1. Ecosistema Visual.png" layout="fill" className="object-cover object-center opacity-70 group-hover:opacity-100 transition-opacity duration-500 hover:scale-105" />
                                     </div>
                                 </div>
                             </div>
@@ -291,8 +293,8 @@ export default function Services() {
                                     <h4 className="text-2xl font-bold text-slate-100">Workflows n8n</h4>
                                     <p className="text-slate-400 text-sm leading-relaxed">El sistema circulatorio digital. Flujos de trabajo automatizados que orquestan el intercambio de valor entre cada nodo.</p>
                                     <div className="w-full h-32 mt-4 rounded-xl bg-slate-800/50 overflow-hidden border border-white/5 relative">
-                                        <img alt="Workflow" className="w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKvIa-hoUpahQ868x8bcVkUTApKuhypNKCay6mWi-z73-d_NIokObZVGXyY_taE3IvVugUN8YozO0ADXQiyRaap765yq09dO1uXwoayjiUZiAm0AAktQ-FeoeLu6SY8BtLnid5oKWaXsvadiy4n3WKqibl7Dp8U048Qy5Xtfk64QreDWzzY-NvTqRgaON_mKuBFu9N2oPNZMIhxUEBRFcCzu2Od_eaMyiT_QD90r6ZXmUPMQkiMmfKgRNN_uoSJF2x_XtMQJ_vo8qg" />
-                                        <div className="absolute inset-0 bg-primary/5 mix-blend-overlay"></div>
+                                        <Image alt="Workflow" src="/2. Cerebro Digital.png" layout="fill" className="object-cover object-center opacity-70 group-hover:opacity-100 transition-opacity duration-500 hover:scale-105" />
+                                        <div className="absolute inset-0 bg-primary/10 mix-blend-overlay pointer-events-none"></div>
                                     </div>
                                 </div>
                             </div>
