@@ -9,7 +9,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "WeKrax | Fusión Digital: Diseño Web e IA",
+  title: "WeKrax | Fusión Digital",
   description: "Diseño Web de Impacto + Sistemas IA Autónomos.",
 };
 
