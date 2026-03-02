@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #FF5F00;
+  --color-primary-dark: #cc4c00;
+  --color-primary-glow: rgba(255, 95, 0, 0.5);
+  --color-background-dark: #000000;
+  
+  --font-display: "Space Grotesk", sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    background-color: var(--color-background-dark);
+    color: #ffffff;
+    font-family: var(--font-display);
+    /* Fondo negro absoluto sugerido por el usuario */
+    background-image: none; 
+  }
+}
+
+@layer utilities {
+  /* 1. Glassmorphism (Efecto Vidrio) */
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05); /* Borde sutil blanco/naranja */
+  }
+
+  /* 2. Gradients y Glow Sutil (Neón detrás del bloque) */
+  .neon-glow-bg {
+    position: relative;
+    z-index: 1;
+  }
+  .neon-glow-bg::before {
+    content: '';
+    position: absolute;
+    inset: -20px;
+    background: radial-gradient(circle at center, rgba(255, 95, 0, 0.15) 0%, transparent 60%);
+    z-index: -1;
+    border-radius: inherit;
+    pointer-events: none;
+  }
+
+  .neon-border {
+    box-shadow: 0 0 15px rgba(255, 95, 0, 0.2), inset 0 0 5px rgba(255, 95, 0, 0.1);
+    border-color: rgba(255, 95, 0, 0.3);
+  }
+
+  /* 3. Hover States Magnéticos */
+  .magnetic-hover {
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+  .magnetic-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 30px -5px rgba(255, 95, 0, 0.25);
+    border-color: rgba(255, 95, 0, 0.4);
+    background: rgba(255, 255, 255, 0.05);
+  }
+  
+  /* Text Balance Utility */
+  .text-balance {
+    text-wrap: balance;
+  }
+}
