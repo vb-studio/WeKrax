@@ -215,7 +215,7 @@ export default function Services() {
                                     <h4 className="text-2xl font-bold text-slate-100">Landings & One-Pages</h4>
                                     <p className="text-slate-400 text-sm leading-relaxed">El punto final de la experiencia visual: interfaces de alto impacto optimizadas para la conversión radical.</p>
                                     <div className="w-full h-32 mt-4 rounded-xl bg-slate-800/50 flex items-center justify-center border border-white/5 overflow-hidden relative">
-                                        <Image alt="Web Dev" src="/1. Ecosistema Visual.png" layout="fill" className="object-cover object-center opacity-70 group-hover:opacity-100 transition-all duration-500 scale-[1.15] group-hover:scale-[1.20]" />
+                                        <Image alt="Web Dev" src="/2. Cerebro Digital.png" layout="fill" className="object-cover object-center opacity-70 group-hover:opacity-100 transition-all duration-500 scale-[1.15] group-hover:scale-[1.20]" />
                                     </div>
                                 </div>
                             </div>
@@ -293,7 +293,7 @@ export default function Services() {
                                     <h4 className="text-2xl font-bold text-slate-100">Workflows n8n</h4>
                                     <p className="text-slate-400 text-sm leading-relaxed">El sistema circulatorio digital. Flujos de trabajo automatizados que orquestan el intercambio de valor entre cada nodo.</p>
                                     <div className="w-full h-32 mt-4 rounded-xl bg-slate-800/50 overflow-hidden border border-white/5 relative">
-                                        <Image alt="Workflow" src="/2. Cerebro Digital.png" layout="fill" className="object-cover object-center opacity-70 group-hover:opacity-100 transition-all duration-500 scale-[1.25] group-hover:scale-[1.30]" />
+                                        <Image alt="Workflow" src="/1. Ecosistema Visual.png" layout="fill" className="object-cover object-center opacity-70 group-hover:opacity-100 transition-all duration-500 scale-[1.25] group-hover:scale-[1.30]" />
                                         <div className="absolute inset-0 bg-primary/10 mix-blend-overlay pointer-events-none"></div>
                                     </div>
                                 </div>
