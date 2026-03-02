@@ -75,7 +75,7 @@ export default function Contact() {
                             </div>
                             <div>
                                 <p className="text-slate-500 text-sm">Sede Central</p>
-                                <p className="text-slate-100 font-medium tracking-wide">Pilar Centro, Buenos Aires. Argentina</p>
+                                <p className="text-slate-100 font-medium tracking-wide">Pilar, Buenos Aires. Argentina</p>
                             </div>
                         </div>
                     </div>
