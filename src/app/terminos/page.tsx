@@ -134,7 +134,7 @@ export default function TerminosGeneral() {
                                 </div>
                                 <div>
                                     <p className="text-slate-100 font-bold">¿Tienes dudas legales?</p>
-                                    <p className="text-slate-400 text-sm">Contacta con legal@wekrax.agency</p>
+                                    <p className="text-slate-400 text-sm">Contacta con jeremias07leiva@gmail.com</p>
                                 </div>
                             </div>
                             <div className="flex flex-wrap justify-center gap-4">

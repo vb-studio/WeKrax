@@ -131,7 +131,7 @@ export default function TerminosDesarrolloWeb() {
                                 </div>
                                 <div>
                                     <p className="text-slate-100 font-bold">¿Dudas sobre el desarrollo web?</p>
-                                    <p className="text-slate-400 text-sm">Contacta con nuestro equipo legal: legal@wekrax.agency</p>
+                                    <p className="text-slate-400 text-sm">Contacta con nuestro equipo legal: jeremias07leiva@gmail.com</p>
                                 </div>
                             </div>
                             <div className="flex flex-wrap justify-center gap-4">

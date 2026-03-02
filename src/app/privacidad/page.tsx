@@ -109,7 +109,7 @@ export default function Privacidad() {
                                 "La confianza es el pilar de nuestra agencia. Proteger sus datos es proteger nuestro futuro."
                             </p>
                             <div className="flex flex-wrap justify-center gap-4">
-                                <a href="mailto:legal@wekrax.agency" className="bg-black hover:bg-white/5 text-slate-100 px-8 py-3 rounded-full text-sm font-bold border border-white/20 hover:border-white/40 transition-all magnetic-hover backdrop-blur-md">
+                                <a href="mailto:jeremias07leiva@gmail.com" className="bg-black hover:bg-white/5 text-slate-100 px-8 py-3 rounded-full text-sm font-bold border border-white/20 hover:border-white/40 transition-all magnetic-hover backdrop-blur-md">
                                     Contactar DPO
                                 </a>
                                 <Link href="/terminos" className="bg-primary hover:bg-primary/90 text-black px-8 py-3 rounded-full text-sm font-bold transition-all magnetic-hover shadow-[0_0_20px_rgba(255,95,0,0.3)] hover:shadow-[0_0_30px_rgba(255,95,0,0.6)]">

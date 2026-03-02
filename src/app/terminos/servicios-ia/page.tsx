@@ -105,7 +105,7 @@ export default function TerminosIA() {
                                 </div>
                                 <div>
                                     <p className="text-slate-100 font-bold">¿Dudas sobre estos términos?</p>
-                                    <p className="text-slate-400 text-sm">Contacta con nuestro equipo legal: legal@wekrax.agency</p>
+                                    <p className="text-slate-400 text-sm">Contacta con nuestro equipo legal: jeremias07leiva@gmail.com</p>
                                 </div>
                             </div>
                         </div>
