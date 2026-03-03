@@ -5,7 +5,7 @@
   --color-primary-dark: #cc4c00;
   --color-primary-glow: rgba(255, 95, 0, 0.5);
   --color-background-dark: #000000;
-  
+
   --font-display: "Space Grotesk", sans-serif;
 }
 
@@ -13,23 +13,25 @@
   html {
     scroll-behavior: smooth;
   }
-  
+
   body {
     background-color: var(--color-background-dark);
     color: #ffffff;
     font-family: var(--font-display);
     /* Fondo negro absoluto sugerido por el usuario */
-    background-image: none; 
+    background-image: none;
   }
 }
 
 @layer utilities {
+
   /* 1. Glassmorphism (Efecto Vidrio) */
   .glass-panel {
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.05); /* Borde sutil blanco/naranja */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    /* Borde sutil blanco/naranja */
   }
 
   /* 2. Gradients y Glow Sutil (Neón detrás del bloque) */
@@ -37,6 +39,7 @@
     position: relative;
     z-index: 1;
   }
+
   .neon-glow-bg::before {
     content: '';
     position: absolute;
@@ -56,15 +59,59 @@
   .magnetic-hover {
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   }
+
   .magnetic-hover:hover {
     transform: translateY(-4px);
     box-shadow: 0 15px 30px -5px rgba(255, 95, 0, 0.25);
     border-color: rgba(255, 95, 0, 0.4);
     background: rgba(255, 255, 255, 0.05);
   }
-  
+
   /* Text Balance Utility */
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* 4. Utilidades 3D y Animaciones Custom (Heredadas de Prototipo) */
+  .perspective-1000 {
+    perspective: 1200px;
+  }
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0) rotateX(12deg) rotateY(-15deg) rotateZ(5deg);
+    }
+
+    50% {
+      transform: translateY(-20px) rotateX(10deg) rotateY(-12deg) rotateZ(4deg);
+    }
+  }
+
+  @keyframes spin-slow {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .animate-spin-slow {
+    animation: spin-slow 10s linear infinite;
+  }
+
+  .card-float-1 {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .card-float-2 {
+    animation: float 8s ease-in-out infinite 1s;
+  }
+
+  .card-float-3 {
+    animation: float 7s ease-in-out infinite 0.5s;
   }
 }

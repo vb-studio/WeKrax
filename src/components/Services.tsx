@@ -1,111 +1,156 @@
+"use client";
 import Image from "next/image";
+import { useEffect } from "react";
 
 export default function Services() {
+    useEffect(() => {
+        // Vanilla JS: Intersection Observer for Scroll Reveal
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.2
+        };
+
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Animación de tarjetas
+                    if (entry.target.classList.contains('reveal-on-scroll')) {
+                        // Pequeño delay artificial para cascada si entran varias a la vez
+                        setTimeout(() => {
+                            entry.target.classList.remove('opacity-0', 'translate-y-8');
+                            entry.target.classList.add('opacity-100', 'translate-y-0');
+                        }, Math.random() * 200); // Delay aleatorio entre 0 y 200ms
+                    }
+
+                    // Animación de líneas SVG
+                    if (entry.target.classList.contains('svg-line')) {
+                        (entry.target as SVGPathElement).style.strokeDashoffset = '0';
+                    }
+
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observar tarjetas
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => revealObserver.observe(el));
+
+        // Observar líneas SVG
+        document.querySelectorAll('.svg-line').forEach(el => revealObserver.observe(el));
+
+        return () => revealObserver.disconnect();
+    }, []);
+
     return (
         <div id="servicios" className="w-full flex flex-col">
-            <section className="relative flex flex-col md:flex-row py-24 md:py-32 overflow-hidden border-t border-b border-white/5 bg-black/50">
+            <section className="relative flex flex-col items-center py-24 md:py-32 overflow-hidden border-t border-b border-white/5 bg-black/50">
 
-                {/* Columna Izquierda: Sistemas IA */}
-                <div className="relative flex-1 flex flex-col justify-center px-8 lg:px-20 py-12 overflow-hidden border-b md:border-b-0 md:border-r border-white/5 group">
-                    <div className="absolute inset-0 bg-[radial-gradient(var(--color-primary-glow)_1px,transparent_1px)] bg-[length:40px_40px] opacity-10 pointer-events-none group-hover:opacity-20 transition-opacity duration-700"></div>
-                    <div className="absolute -left-20 top-1/4 h-96 w-96 bg-primary/10 rounded-full blur-[120px] pointer-events-none group-hover:bg-primary/20 transition-colors duration-1000"></div>
+                <div className="w-full max-w-[1600px] flex flex-col md:flex-row relative z-10">
 
-                    <div className="relative z-10 max-w-xl mx-auto md:mx-0">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold uppercase tracking-widest mb-6 magnetic-hover">
-                            <span className="material-symbols-outlined text-sm">precision_manufacturing</span>
-                            Eficiencia Operativa
-                        </div>
+                    {/* Columna Izquierda: Sistemas IA */}
+                    <div className="relative flex-1 flex flex-col justify-center px-8 lg:px-20 py-12 overflow-hidden border-b md:border-b-0 md:border-r border-white/5 group">
+                        <div className="absolute inset-0 bg-[radial-gradient(var(--color-primary-glow)_1px,transparent_1px)] bg-[length:40px_40px] opacity-10 pointer-events-none group-hover:opacity-20 transition-opacity duration-700"></div>
+                        <div className="absolute -left-20 top-1/4 h-96 w-96 bg-primary/10 rounded-full blur-[120px] pointer-events-none group-hover:bg-primary/20 transition-colors duration-1000"></div>
 
-                        <h2 className="text-5xl lg:text-7xl font-black mb-6 leading-[0.9] tracking-tighter text-white">Sistemas <br /><span className="text-primary drop-shadow-[0_0_15px_rgba(255,95,0,0.4)]">IA</span></h2>
-                        <p className="text-white/60 text-base lg:text-lg mb-10 leading-relaxed max-w-md">
-                            El motor invisible de tu crecimiento. Implementamos workflows de n8n y agentes autónomos diseñados para escalar sin fricción.
-                        </p>
-
-                        <div className="glass-panel rounded-2xl p-6 w-full max-w-md shadow-2xl magnetic-hover">
-                            <div className="flex items-center gap-4 mb-6">
-                                <div className="size-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center">
-                                    <span className="material-symbols-outlined text-primary text-xl">hub</span>
-                                </div>
-                                <div className="h-[1px] flex-1 bg-gradient-to-r from-primary/40 to-transparent"></div>
-                                <div className="size-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center">
-                                    <span className="material-symbols-outlined text-orange-300 text-xl">smart_toy</span>
-                                </div>
+                        <div className="relative z-10 max-w-xl mx-auto md:mx-0">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold uppercase tracking-widest mb-6 magnetic-hover">
+                                <span className="material-symbols-outlined text-sm">precision_manufacturing</span>
+                                Eficiencia Operativa
                             </div>
 
-                            <div className="space-y-4">
-                                <div className="flex justify-between items-end">
-                                    <div className="space-y-1">
-                                        <span className="block text-[10px] font-mono text-white/40 uppercase tracking-widest">Node status</span>
-                                        <span className="block text-sm font-bold text-white/90">n8n Production Workflow</span>
+                            <h2 className="text-5xl lg:text-7xl font-black mb-6 leading-[0.9] tracking-tighter text-white">Sistemas <br /><span className="text-primary drop-shadow-[0_0_15px_rgba(255,95,0,0.4)]">IA</span></h2>
+                            <p className="text-white/60 text-base lg:text-lg mb-10 leading-relaxed max-w-md">
+                                El motor invisible de tu crecimiento. Implementamos workflows de n8n y agentes autónomos diseñados para escalar sin fricción.
+                            </p>
+
+                            <div className="glass-panel rounded-2xl p-6 w-full max-w-md shadow-2xl magnetic-hover">
+                                <div className="flex items-center gap-4 mb-6">
+                                    <div className="size-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center">
+                                        <span className="material-symbols-outlined text-primary text-xl">hub</span>
                                     </div>
-                                    <span className="text-[10px] font-bold text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded-full flex items-center gap-1 neon-border border-emerald-500/30">
-                                        <span className="size-1.5 rounded-full bg-emerald-400 animate-pulse drop-shadow-[0_0_5px_currentColor]"></span>
-                                        ACTIVE
-                                    </span>
+                                    <div className="h-[1px] flex-1 bg-gradient-to-r from-primary/40 to-transparent"></div>
+                                    <div className="size-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center">
+                                        <span className="material-symbols-outlined text-orange-300 text-xl">smart_toy</span>
+                                    </div>
                                 </div>
-                                <div className="w-full bg-white/5 h-1.5 rounded-full overflow-hidden">
-                                    <div className="bg-primary h-full w-[85%] shadow-[0_0_10px_rgba(255,95,0,0.8)]"></div>
-                                </div>
-                                <div className="flex gap-2">
-                                    <div className="h-2 w-full bg-white/5 rounded-full"></div>
-                                    <div className="h-2 w-1/3 bg-white/5 rounded-full"></div>
+
+                                <div className="space-y-4">
+                                    <div className="flex justify-between items-end">
+                                        <div className="space-y-1">
+                                            <span className="block text-[10px] font-mono text-white/40 uppercase tracking-widest">Node status</span>
+                                            <span className="block text-sm font-bold text-white/90">n8n Production Workflow</span>
+                                        </div>
+                                        <span className="text-[10px] font-bold text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded-full flex items-center gap-1 neon-border border-emerald-500/30">
+                                            <span className="size-1.5 rounded-full bg-emerald-400 animate-pulse drop-shadow-[0_0_5px_currentColor]"></span>
+                                            ACTIVE
+                                        </span>
+                                    </div>
+                                    <div className="w-full bg-white/5 h-1.5 rounded-full overflow-hidden">
+                                        <div className="bg-primary h-full w-[85%] shadow-[0_0_10px_rgba(255,95,0,0.8)]"></div>
+                                    </div>
+                                    <div className="flex gap-2">
+                                        <div className="h-2 w-full bg-white/5 rounded-full"></div>
+                                        <div className="h-2 w-1/3 bg-white/5 rounded-full"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                {/* Columna Derecha: Experiencias Visuales */}
-                <div className="relative flex-1 flex flex-col justify-center px-8 lg:px-20 py-12 overflow-hidden group">
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(255,95,0,0.1)_0%,transparent_60%)] pointer-events-none group-hover:opacity-100 opacity-60 transition-opacity duration-700"></div>
-                    <div className="absolute -right-20 bottom-1/4 h-96 w-96 bg-primary/5 rounded-full blur-[120px] pointer-events-none group-hover:bg-primary/20 transition-colors duration-1000"></div>
+                    {/* Columna Derecha: Experiencias Visuales */}
+                    <div className="relative flex-1 flex flex-col justify-center px-8 lg:px-20 py-12 overflow-hidden group">
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(255,95,0,0.1)_0%,transparent_60%)] pointer-events-none group-hover:opacity-100 opacity-60 transition-opacity duration-700"></div>
+                        <div className="absolute -right-20 bottom-1/4 h-96 w-96 bg-primary/5 rounded-full blur-[120px] pointer-events-none group-hover:bg-primary/20 transition-colors duration-1000"></div>
 
-                    <div className="relative z-10 max-w-xl mx-auto md:ml-auto md:mr-0 md:text-right flex flex-col md:items-end">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/60 text-[10px] font-bold uppercase tracking-widest mb-6 magnetic-hover">
-                            <span className="material-symbols-outlined text-sm text-primary">auto_awesome</span>
-                            Impacto Visual
-                        </div>
+                        <div className="relative z-10 max-w-xl mx-auto md:ml-auto md:mr-0 md:text-right flex flex-col md:items-end">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/60 text-[10px] font-bold uppercase tracking-widest mb-6 magnetic-hover">
+                                <span className="material-symbols-outlined text-sm text-primary">auto_awesome</span>
+                                Impacto Visual
+                            </div>
 
-                        <h2 className="text-5xl lg:text-7xl font-black mb-6 leading-[0.9] tracking-tighter text-white">Experiencias <br /><span className="text-gray-300">Visuales</span></h2>
-                        <p className="text-white/60 text-base lg:text-lg mb-10 leading-relaxed max-w-md">
-                            Convertimos la tecnología en deseo. Diseñamos interfaces de alto rendimiento que posicionan tu marca en el futuro.
-                        </p>
+                            <h2 className="text-5xl lg:text-7xl font-black mb-6 leading-[0.9] tracking-tighter text-white">Experiencias <br /><span className="text-gray-300">Visuales</span></h2>
+                            <p className="text-white/60 text-base lg:text-lg mb-10 leading-relaxed max-w-md">
+                                Convertimos la tecnología en deseo. Diseñamos interfaces de alto rendimiento que posicionan tu marca en el futuro.
+                            </p>
 
-                        <div className="glass-panel neon-border rounded-2xl p-2 w-full max-w-md shadow-[0_0_30px_rgba(255,95,0,0.15)] magnetic-hover group-hover:shadow-[0_0_40px_rgba(255,95,0,0.25)]">
-                            <div className="bg-[#0a0a0a] rounded-xl aspect-video overflow-hidden relative border border-white/5">
+                            <div className="glass-panel neon-border rounded-2xl p-2 w-full max-w-md shadow-[0_0_30px_rgba(255,95,0,0.15)] magnetic-hover group-hover:shadow-[0_0_40px_rgba(255,95,0,0.25)]">
+                                <div className="bg-[#0a0a0a] rounded-xl aspect-video overflow-hidden relative border border-white/5">
 
-                                <div className="p-3 border-b border-white/5 flex justify-between items-center bg-white/5 backdrop-blur-sm">
-                                    <div className="flex gap-1.5">
-                                        <div className="size-2.5 rounded-full bg-white/20"></div>
-                                        <div className="size-2.5 rounded-full bg-white/20"></div>
-                                        <div className="size-2.5 rounded-full bg-white/20"></div>
-                                    </div>
-                                    <div className="px-3 py-0.5 rounded-md bg-white/5 text-[8px] text-white/40 font-mono tracking-widest">wekrax.agency/preview</div>
-                                </div>
-
-                                <div className="p-6 space-y-4">
-                                    <div className="h-6 w-2/3 bg-white/10 rounded-md"></div>
-                                    <div className="grid grid-cols-2 gap-3">
-                                        <div className="h-20 bg-primary/10 rounded-lg border border-primary/20 flex items-center justify-center">
-                                            <span className="material-symbols-outlined text-primary/60 text-3xl">image</span>
+                                    <div className="p-3 border-b border-white/5 flex justify-between items-center bg-white/5 backdrop-blur-sm">
+                                        <div className="flex gap-1.5">
+                                            <div className="size-2.5 rounded-full bg-white/20"></div>
+                                            <div className="size-2.5 rounded-full bg-white/20"></div>
+                                            <div className="size-2.5 rounded-full bg-white/20"></div>
                                         </div>
-                                        <div className="space-y-2">
-                                            <div className="h-3 w-full bg-white/10 rounded-full"></div>
-                                            <div className="h-3 w-4/5 bg-white/10 rounded-full"></div>
-                                            <div className="h-3 w-full bg-white/10 rounded-full"></div>
-                                        </div>
+                                        <div className="px-3 py-0.5 rounded-md bg-white/5 text-[8px] text-white/40 font-mono tracking-widest">wekrax.agency/preview</div>
                                     </div>
-                                    <div className="h-10 w-full bg-white/10 rounded-lg border border-white/5"></div>
-                                </div>
 
-                                <div className="absolute bottom-3 right-3 bg-white text-black text-[9px] font-bold px-3 py-1.5 rounded-full shadow-[0_0_15px_rgba(255,255,255,0.4)] flex items-center gap-1 group-hover:scale-110 transition-transform">
-                                    <span className="material-symbols-outlined text-xs text-primary">verified</span>
-                                    PIXEL PERFECT
-                                </div>
+                                    <div className="p-6 space-y-4">
+                                        <div className="h-6 w-2/3 bg-white/10 rounded-md"></div>
+                                        <div className="grid grid-cols-2 gap-3">
+                                            <div className="h-20 bg-primary/10 rounded-lg border border-primary/20 flex items-center justify-center">
+                                                <span className="material-symbols-outlined text-primary/60 text-3xl">image</span>
+                                            </div>
+                                            <div className="space-y-2">
+                                                <div className="h-3 w-full bg-white/10 rounded-full"></div>
+                                                <div className="h-3 w-4/5 bg-white/10 rounded-full"></div>
+                                                <div className="h-3 w-full bg-white/10 rounded-full"></div>
+                                            </div>
+                                        </div>
+                                        <div className="h-10 w-full bg-white/10 rounded-lg border border-white/5"></div>
+                                    </div>
 
+                                    <div className="absolute bottom-3 right-3 bg-white text-black text-[9px] font-bold px-3 py-1.5 rounded-full shadow-[0_0_15px_rgba(255,255,255,0.4)] flex items-center gap-1 group-hover:scale-110 transition-transform">
+                                        <span className="material-symbols-outlined text-xs text-primary">verified</span>
+                                        PIXEL PERFECT
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
 
             </section>
@@ -142,12 +187,12 @@ export default function Services() {
                                 <stop offset="100%" stopColor="transparent"></stop>
                             </linearGradient>
                         </defs>
-                        <path style={{ strokeDasharray: "10", stroke: "url(#conduitGradient)" }} className="opacity-50" d="M 400 250 Q 600 250, 700 800" fill="none" strokeWidth="2"></path>
-                        <path style={{ strokeDasharray: "10", stroke: "url(#conduitGradient)" }} className="opacity-50" d="M 400 650 Q 600 650, 700 800" fill="none" strokeWidth="2"></path>
-                        <path style={{ strokeDasharray: "10", stroke: "url(#conduitGradient)" }} className="opacity-50" d="M 400 1050 Q 600 1050, 700 800" fill="none" strokeWidth="2"></path>
-                        <path style={{ strokeDasharray: "10", stroke: "url(#conduitGradient)" }} className="opacity-50" d="M 1000 350 Q 800 350, 700 800" fill="none" strokeWidth="2"></path>
-                        <path style={{ strokeDasharray: "10", stroke: "url(#conduitGradient)" }} className="opacity-50" d="M 1000 750 Q 800 750, 700 800" fill="none" strokeWidth="2"></path>
-                        <path style={{ strokeDasharray: "10", stroke: "url(#conduitGradient)" }} className="opacity-50" d="M 1000 1150 Q 800 1150, 700 800" fill="none" strokeWidth="2"></path>
+                        <path className="opacity-50 svg-line" style={{ strokeDasharray: "1000", strokeDashoffset: "1000", transition: "stroke-dashoffset 2s ease-in-out", stroke: "url(#conduitGradient)" }} d="M 400 250 Q 600 250, 700 800" fill="none" strokeWidth="2"></path>
+                        <path className="opacity-50 svg-line" style={{ strokeDasharray: "1000", strokeDashoffset: "1000", transition: "stroke-dashoffset 2s ease-in-out 0.2s", stroke: "url(#conduitGradient)" }} d="M 400 650 Q 600 650, 700 800" fill="none" strokeWidth="2"></path>
+                        <path className="opacity-50 svg-line" style={{ strokeDasharray: "1000", strokeDashoffset: "1000", transition: "stroke-dashoffset 2s ease-in-out 0.4s", stroke: "url(#conduitGradient)" }} d="M 400 1050 Q 600 1050, 700 800" fill="none" strokeWidth="2"></path>
+                        <path className="opacity-50 svg-line" style={{ strokeDasharray: "1000", strokeDashoffset: "1000", transition: "stroke-dashoffset 2s ease-in-out 0.6s", stroke: "url(#conduitGradient)" }} d="M 1000 350 Q 800 350, 700 800" fill="none" strokeWidth="2"></path>
+                        <path className="opacity-50 svg-line" style={{ strokeDasharray: "1000", strokeDashoffset: "1000", transition: "stroke-dashoffset 2s ease-in-out 0.8s", stroke: "url(#conduitGradient)" }} d="M 1000 750 Q 800 750, 700 800" fill="none" strokeWidth="2"></path>
+                        <path className="opacity-50 svg-line" style={{ strokeDasharray: "1000", strokeDashoffset: "1000", transition: "stroke-dashoffset 2s ease-in-out 1s", stroke: "url(#conduitGradient)" }} d="M 1000 1150 Q 800 1150, 700 800" fill="none" strokeWidth="2"></path>
                         <path d="M 400 250 L 1000 750" fill="none" stroke="rgba(244,123,37,0.1)" strokeDasharray="5,5" strokeWidth="1"></path>
                         <path d="M 400 1050 L 1000 350" fill="none" stroke="rgba(244,123,37,0.1)" strokeDasharray="5,5" strokeWidth="1"></path>
                     </svg>
@@ -167,7 +212,7 @@ export default function Services() {
                             </div>
 
                             {/* Node 01 */}
-                            <div className="relative group max-w-md self-start lg:ml-12 magnetic-hover">
+                            <div className="relative group max-w-md self-start lg:ml-12 magnetic-hover reveal-on-scroll opacity-0 translate-y-8 transition-all duration-700 ease-out">
                                 <div className="absolute -left-12 top-1/2 -translate-y-1/2 w-6 h-6 bg-primary rounded-full shadow-[0_0_20px_rgba(244,123,37,0.8)] hidden lg:block border-4 border-black z-20"></div>
                                 <div className="flex flex-col items-start gap-4 p-8 rounded-3xl glass-panel group-hover:border-primary/50 group-hover:bg-primary/[0.05] transition-all duration-300">
                                     <div className="flex justify-between w-full">
@@ -184,7 +229,7 @@ export default function Services() {
                             </div>
 
                             {/* Node 02 */}
-                            <div className="relative group max-w-md self-end lg:mr-[-40px] magnetic-hover">
+                            <div className="relative group max-w-md self-end lg:mr-[-40px] magnetic-hover reveal-on-scroll opacity-0 translate-y-8 transition-all duration-700 ease-out">
                                 <div className="absolute -left-12 top-1/2 -translate-y-1/2 w-6 h-6 bg-primary rounded-full shadow-[0_0_20px_rgba(244,123,37,0.8)] hidden lg:block border-4 border-black z-20"></div>
                                 <div className="flex flex-col items-start gap-4 p-8 rounded-3xl glass-panel group-hover:border-primary/50 group-hover:bg-primary/[0.05] transition-all duration-300">
                                     <div className="flex justify-between w-full">
@@ -205,7 +250,7 @@ export default function Services() {
                             </div>
 
                             {/* Node 03 */}
-                            <div className="relative group max-w-md self-start lg:ml-20 magnetic-hover">
+                            <div className="relative group max-w-md self-start lg:ml-20 magnetic-hover reveal-on-scroll opacity-0 translate-y-8 transition-all duration-700 ease-out">
                                 <div className="absolute -left-12 top-1/2 -translate-y-1/2 w-6 h-6 bg-primary rounded-full shadow-[0_0_20px_rgba(244,123,37,0.8)] hidden lg:block border-4 border-black z-20"></div>
                                 <div className="flex flex-col items-start gap-4 p-8 rounded-3xl glass-panel group-hover:border-primary/50 group-hover:bg-primary/[0.05] transition-all duration-300">
                                     <div className="flex justify-between w-full">
@@ -234,7 +279,7 @@ export default function Services() {
                             </div>
 
                             {/* System A-1 */}
-                            <div className="relative group max-w-md self-end lg:mr-12 magnetic-hover">
+                            <div className="relative group max-w-md self-end lg:mr-12 magnetic-hover reveal-on-scroll opacity-0 translate-y-8 transition-all duration-700 ease-out">
                                 <div className="absolute -right-12 top-1/2 -translate-y-1/2 w-6 h-6 bg-primary rounded-full shadow-[0_0_20px_rgba(244,123,37,0.8)] hidden lg:block border-4 border-black z-20"></div>
                                 <div className="flex flex-col items-start gap-4 p-8 rounded-3xl glass-panel group-hover:border-primary/50 group-hover:bg-primary/[0.05] transition-all duration-300">
                                     <div className="flex justify-between w-full">
@@ -257,7 +302,7 @@ export default function Services() {
                             </div>
 
                             {/* System A-2 */}
-                            <div className="relative group max-w-md self-start lg:ml-[-40px] magnetic-hover">
+                            <div className="relative group max-w-md self-start lg:ml-[-40px] magnetic-hover reveal-on-scroll opacity-0 translate-y-8 transition-all duration-700 ease-out">
                                 <div className="absolute -right-12 top-1/2 -translate-y-1/2 w-6 h-6 bg-primary rounded-full shadow-[0_0_20px_rgba(244,123,37,0.8)] hidden lg:block border-4 border-black z-20"></div>
                                 <div className="flex flex-col items-start gap-4 p-8 rounded-3xl glass-panel group-hover:border-primary/50 group-hover:bg-primary/[0.05] transition-all duration-300">
                                     <div className="flex justify-between w-full">
@@ -283,7 +328,7 @@ export default function Services() {
                             </div>
 
                             {/* System A-3 */}
-                            <div className="relative group max-w-md self-end lg:mr-20 magnetic-hover">
+                            <div className="relative group max-w-md self-end lg:mr-20 magnetic-hover reveal-on-scroll opacity-0 translate-y-8 transition-all duration-700 ease-out">
                                 <div className="absolute -right-12 top-1/2 -translate-y-1/2 w-6 h-6 bg-primary rounded-full shadow-[0_0_20px_rgba(244,123,37,0.8)] hidden lg:block border-4 border-black z-20"></div>
                                 <div className="flex flex-col items-start gap-4 p-8 rounded-3xl glass-panel group-hover:border-primary/50 group-hover:bg-primary/[0.05] transition-all duration-300">
                                     <div className="flex justify-between w-full">
@@ -303,50 +348,6 @@ export default function Services() {
                     </div>
                 </div>
 
-                {/* Nexus Unification Call */}
-                <div className="relative w-full max-w-5xl mx-auto mt-32 px-6">
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 hidden lg:flex" id="nexus-anchor">
-                        <div className="w-24 h-24 bg-primary rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(255,95,0,0.6)] border-8 border-black z-30">
-                            <span className="material-symbols-outlined text-black text-4xl font-bold">flare</span>
-                        </div>
-                    </div>
-
-                    <div className="rounded-[3rem] bg-gradient-to-br from-primary/10 via-black to-primary/5 border border-primary/30 p-12 md:p-24 text-center relative overflow-hidden backdrop-blur-xl">
-                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-50"></div>
-                        <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-50"></div>
-                        <div className="absolute -top-24 -right-24 p-8 opacity-10">
-                            <span className="material-symbols-outlined text-[20rem]">settings_input_component</span>
-                        </div>
-
-                        <div className="relative z-10">
-                            <h2 className="text-4xl md:text-5xl font-bold text-slate-100 mb-8 tracking-tighter">Unificación de Sistemas</h2>
-                            <p className="text-slate-300 text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed font-light">
-                                El Nexus Central donde el <span className="text-primary font-bold">Ecosistema Visual</span> y el <span className="text-primary font-bold">Cerebro Digital</span> se fusionan en un organismo único. Aquí es donde la eficiencia de la IA encuentra la elegancia del diseño.
-                            </p>
-                            <div className="flex flex-wrap justify-center gap-6">
-                                <a href="/#contacto" className="group relative bg-primary text-black px-12 py-5 rounded-full font-bold text-lg overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(255,95,0,0.5)] flex items-center gap-2 magnetic-hover">
-                                    <span className="material-symbols-outlined font-bold">rocket_launch</span>
-                                    Agendar Consultoría
-                                </a>
-                            </div>
-                        </div>
-
-                        <div className="mt-16 flex justify-center items-center gap-8 md:gap-12 opacity-40">
-                            <div className="flex items-center gap-2">
-                                <div className="h-px w-8 bg-primary"></div>
-                                <span className="text-[10px] uppercase tracking-widest font-bold">Protocolo Visual</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <div className="h-px w-8 bg-primary"></div>
-                                <span className="text-[10px] uppercase tracking-widest font-bold">Lógica de Datos</span>
-                            </div>
-                            <div className="flex items-center gap-2 hidden md:flex">
-                                <div className="h-px w-8 bg-primary"></div>
-                                <span className="text-[10px] uppercase tracking-widest font-bold">IA Nexus Sync</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </section>
         </div >
     );

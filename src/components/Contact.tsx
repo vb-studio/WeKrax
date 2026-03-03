@@ -38,8 +38,25 @@ export default function Contact() {
     };
 
     return (
-        <section id="contacto" className="relative flex-1 flex flex-col items-center justify-center px-6 py-24 md:py-32 neon-glow-bg">
-            <div className="absolute inset-0 bg-[radial-gradient(at_0%_0%,rgba(255,95,0,0.15)_0px,transparent_50%),radial-gradient(at_100%_100%,rgba(255,95,0,0.1)_0px,transparent_50%)] pointer-events-none opacity-50"></div>
+        <section id="contacto" className="relative w-full flex flex-col items-center justify-center px-6 py-24 md:py-32 bg-transparent overflow-hidden">
+            {/* Puente Visual Animado de Nodos a Contacto */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-[90%] w-full max-w-[800px] h-32 md:h-48 pointer-events-none z-0">
+                <svg className="w-full h-full" viewBox="0 0 200 100" preserveAspectRatio="none" fill="none">
+                    <path
+                        d="M150 0 C150 80, 50 20, 50 100"
+                        stroke="#FF5C00"
+                        strokeOpacity="0.4"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        className="svg-line"
+                        style={{ strokeDasharray: 300, strokeDashoffset: 300, transition: "stroke-dashoffset 1.5s ease-out" }}
+                    />
+                </svg>
+            </div>
+
+            <div className="absolute inset-0 bg-[radial-gradient(at_0%_0%,rgba(255,95,0,0.15)_0px,transparent_50%),radial-gradient(at_100%_100%,rgba(255,95,0,0.1)_0px,transparent_50%)] pointer-events-none opacity-50 z-0"></div>
+
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-[600px] bg-[#FF6B00]/10 blur-[150px] rounded-full pointer-events-none -z-10"></div>
 
             <div className="max-w-[1200px] w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
 
@@ -85,7 +102,7 @@ export default function Contact() {
                 <div className="relative magnetic-hover perspective-1000">
                     <div className="absolute -inset-2 bg-primary/20 blur-3xl rounded-full opacity-30 pointer-events-none"></div>
 
-                    <div className="relative glass-panel neon-border rounded-xl p-8 md:p-10 shadow-[0_0_40px_rgba(255,95,0,0.1)] hover:shadow-[0_0_50px_rgba(255,95,0,0.2)] transition-shadow duration-300">
+                    <div className="bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-2xl p-8 shadow-2xl relative z-10">
                         <h3 className="text-2xl font-bold text-slate-100 mb-8 flex items-center gap-3">
                             <span className="material-symbols-outlined text-primary">rocket_launch</span>
                             Enviar Consulta
@@ -120,7 +137,7 @@ export default function Contact() {
 
                             <button
                                 disabled={isSubmitting || isSuccess}
-                                className="w-full h-14 bg-gradient-to-r from-primary to-[#ff9d5c] text-black font-black text-lg uppercase tracking-widest rounded-lg shadow-[0_0_20px_rgba(244,123,37,0.5)] hover:shadow-[0_0_30px_rgba(244,123,37,0.7)] transition-all active:scale-[0.98] flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
+                                className="bg-[#FF6B00] text-white font-bold w-full py-4 rounded-xl shadow-[0_0_20px_rgba(255,107,0,0.4)] hover:scale-105 hover:bg-[#ff7b1a] transition-all flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
                                 type="submit"
                             >
                                 {isSubmitting ? "Enviando..." : isSuccess ? "Enviado con Éxito" : "Enviar Consulta"}
