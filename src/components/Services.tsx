@@ -156,7 +156,7 @@ export default function Services() {
             </section>
 
             {/* Sección: Ecosistema & Cerebro (Proceso extraído de code1.html) */}
-            <section className="relative px-6 py-20 md:py-32 flex flex-col items-center overflow-hidden neon-glow-bg z-10">
+            <section className="relative px-6 py-20 md:py-32 flex flex-col items-center overflow-visible neon-glow-bg z-10">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 blur-[150px] rounded-full pointer-events-none hidden lg:block z-0"></div>
 
                 <div className="max-w-4xl z-10 text-center mb-16">
@@ -347,6 +347,7 @@ export default function Services() {
                         </div>
                     </div>
                 </div>
+                <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-b from-transparent to-black pointer-events-none z-0"></div>
 
             </section>
         </div >

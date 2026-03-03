@@ -38,7 +38,9 @@ export default function Contact() {
     };
 
     return (
-        <section id="contacto" className="relative w-full flex flex-col items-center justify-center px-6 py-24 md:py-32 bg-transparent overflow-hidden">
+        <section id="contacto" className="relative w-full flex flex-col items-center justify-center px-6 py-24 md:py-32 bg-transparent overflow-visible">
+            {/* Seamless Top Fade */}
+            <div className="absolute top-0 left-0 w-full h-48 bg-gradient-to-t from-transparent to-black pointer-events-none z-10"></div>
             {/* Puente Visual Animado de Nodos a Contacto */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-[90%] w-full max-w-[800px] h-32 md:h-48 pointer-events-none z-0">
                 <svg className="w-full h-full" viewBox="0 0 200 100" preserveAspectRatio="none" fill="none">
